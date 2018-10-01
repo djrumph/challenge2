@@ -9,12 +9,14 @@
 <body>
 
     <button id="getText">Get Text</button>
-    <button id="getUsers">Get Users</button>
+    <button id="getUsers">Get JSON</button>
+    <button id="getPosts">Get API Data</button>
     <p id="output"></p>
 
     <script>
         document.getElementById('getText').addEventListener('click', getText);
         document.getElementById('getUsers').addEventListener('click', getUsers);
+        document.getElementById('getPosts').addEventListener('click', getPosts);
         function getText(){
 
             //ES5
@@ -37,12 +39,40 @@
         }
         
         //IMP
+        //idea to make a count variable and increment as the button is pushed for each object in JSON file
         function getUsers(){
             fetch('users.json')
                 .then((res) => res.json())
                 .then((data) => {
                     let output = '<h2>Users </h2>';
-                    console.log(data);  
+                    data.forEach(function(user){
+                        output+= `
+                        <ul>
+                            <li>ID: ${user.id}</li>
+                            <li>ID: ${user.name}</li>
+                            <li>ID: ${user.email}</li>
+                        </ul>
+                        `;
+                    });
+                    document.getElementById('output').innerHTML = output;
+            })
+        }
+
+        function getPosts(){
+            fetch('https://jsonplaceholder.typicode.com/posts')
+                .then((res) => res.json())
+                .then((data) => {
+                    let output = '<h2>Posts </h2>';
+                    data.forEach(function(post){
+                        output+= `
+                        <div>
+                            <h3>${post.title} </h3>
+                            <p>${post.body} </p>
+
+                        </div>
+                        `;
+                    });
+                    document.getElementById('output').innerHTML = output;
             })
         }
 
