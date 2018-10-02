@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -109,6 +109,66 @@
             .then((res) => res.json())
             .then((data) => console.log(data))
         }
+
+    </script>
+    
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+        <div class="box" id="box1" style = "height:100vh">
+                <h3> Touch Me! </h3>
+                
+                 
+                <h3 id="statusdiv">Status</h3>
+            </div>
+    <script>
+ var startx = 0
+ var finishx= 0;
+    window.addEventListener('load', function(){
+ 
+ var box1 = document.getElementById('box1')
+ var statusadiv = document.getElementById('statusdiv')
+
+ var dist = 0
+
+ box1.addEventListener('touchstart', function(e){
+     var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+     startx = parseInt(touchobj.clientX) // get x position of touch point relative to left edge of browser
+     //statusdiv.innerHTML = 'Status: touchstart<br> ClientX: ' + startx + 'px'
+     e.preventDefault()
+ }, false)
+
+ box1.addEventListener('touchend', function(e){
+     var touchobj = e.changedTouches[0] // reference first touch point for this event
+    // statusdiv.innerHTML = 'Status: touchend<br> Resting x coordinate: ' + touchobj.clientX + 'px'
+     finishx = touchobj.clientX;
+
+     console.log("startx" + startx);
+     console.log("finsix" + finishx);
+    if(startx - finishx >0){
+    console.log("swipe left");
+    statusdiv.innerHTML = 'swipe left';
+    }
+    else{
+        console.log("swipe right");
+        statusdiv.innerHTML = 'swipe right';
+    }
+     e.preventDefault()
+ }, false)
+
+}, false)
+
 
     </script>
     
