@@ -7,6 +7,18 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div style = "height:100vh">
+    <p>BODY TEXT</p>
+    </div>
+    <script>
+    document.querySelector('div').addEventListener('touchstart', touch);
+    document.querySelector('div').addEventListener('touchmove', touch);
+
+    function touch(event){
+        console.log(event.touches, event.type);
+    }
+    </script>
     
 </body>
 </html>
