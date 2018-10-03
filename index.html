@@ -32,7 +32,7 @@
         <div class="box" id="box1" style = "height:100vh">
                 
                  
-                <h3 id="statusdiv">Status</h3>
+                <h3 id="statusdiv">Swipe left and right to View NYT movie reviews</h3>
                 <p id="output"></p>
             </div>
             
@@ -132,8 +132,9 @@ var count = 0;
                     //figure out whu reutrns 0
                     console.log(count);
                     if(count <= 0){
-                        count = data.results.length;
+                        count = data.results.length-1;
                     }
+                    console.log(count);
                     document.getElementById('output').innerHTML = objects[count];
                     
             })
