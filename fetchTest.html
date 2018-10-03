@@ -46,17 +46,6 @@
         //IMP
         //idea to make a count variable and increment as the button is pushed for each object in JSON file
         function getPostsForward(){
-
- //code for using keys
-//  fetch('URL_GOES_HERE', { 
-//    method: 'post', 
-//    headers: new Headers({
-//      'Authorization': 'cf54b26b95de4f4abeb378ae5b92e72a'), 
-//      'Content-Type': 'application/x-www-form-urlencoded'
-//    }), 
-//    body: 'A=1&B=2'
-//  });
-
             fetch('https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key=cf54b26b95de4f4abeb378ae5b92e72a')
                 .then((res) => res.json())
                 .then((data) => {
