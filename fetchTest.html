@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fetch Test</title>
+
+    <style>
+    .test{
+        color:red;
+    }
+    .fade{
+        
+        -webkit-animation: fadeinout 4s linear forwards;
+        animation: fadeinout 4s linear forwards;
+    }
+    @keyframes fadeinout {
+        0%,100% { opacity: 0 }
+        50% { opacity: 1 }
+    }
+    /*@-webkit-keyframes fadeinout {
+        0%,100% { opacity: 0; }
+        50% { opacity: 1; }
+    }*/
+
+
+    </style>
 </head>
 <body>
     <button id="getPosts1">Get API Data Forward</button>
@@ -43,11 +64,12 @@
                     let output = '<h2>Posts </h2>';
                     data.results.forEach(function(post){
                         objects.push(`
-                        <div>
-                            <h3>${post.display_title} </h3>
+                        <div class = "fade">
+                            <h1 class = "test">${post.display_title} </h1>
+                            <h3>${post.headline} </h3>
                             <img src = ${post.multimedia.src} alt = "${post.display_title}">
                             <p>${post.summary_short} </p>
-                            <p> <a href = ${post.link.url}> ${post.link.suggested_link_text} </a></p>
+                            <p> <a href = ${post.link.url} style = "height:${post.multimedia.height}; width: ${post.multimedia.width}"> ${post.link.suggested_link_text} </a></p>
                             <p> Rated: ${post.mpaa_rating} </p>
                             <p>${post.headline} </p>
                         </div>
