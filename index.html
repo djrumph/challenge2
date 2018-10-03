@@ -93,7 +93,8 @@ var count = 0;
                             <h3>${post.headline} </h3>
                             <img src = ${post.multimedia.src} alt = "${post.display_title}">
                             <p>${post.summary_short} </p>
-                            <p> <a href = ${post.link.url} style = "height:${post.multimedia.height}; width: ${post.multimedia.width}"> ${post.link.suggested_link_text} </a></p>
+                            <p> <a target = "_blank" href = ${post.link.url} style = "height:${post.multimedia.height}; width: ${post.multimedia.width}"> ${post.link.suggested_link_text} </a></p>
+                            <p>In Theaters on: ${post.opening_date}</p>
                             <p> Rated: ${post.mpaa_rating} </p>
                             <p>${post.headline} </p>
                         </div>
