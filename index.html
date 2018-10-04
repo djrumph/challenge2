@@ -8,44 +8,43 @@
 
     <style>
 
-    :root{
-        --color:#dbdfde;
-        --color2:#181a1d;
-        --colorBackground: #ffffff;
-        --box1: #000000;
-        --box2: #ffffff;
-        --box3: #201e81;
-        --box4: #ffffff;
-    }
+            :root{
+                --color:#dbdfde;
+                --color2:#181a1d;
+                --colorBackground: #ffffff;
+                --box1: #000000;
+                --box2: #ffffff;
+                --box3: #201e81;
+                --box4: #ffffff;
+            }
 
-    *{
-        margin:0;
+            *{
+                margin:0;
 
-    }
+            }
 
-    .color{
-       color: var(--color);
-    }
+            .color{
+            color: var(--color);
+            }
 
-    .color2{
-        color:var(--color2);
-    }
+            .color2{
+                color:var(--color2);
+            }
 
-    .backgroundColor{
-        background-color: var(--colorBackground);
-    }
+            .backgroundColor{
+                background-color: var(--colorBackground);
+            }
 
-    .app {
-            display:                grid;
-            grid-template-columns:  .5fr 1fr 1fr .5fr;
-            grid-template-rows:     .5fr .5fr 8.65fr 2fr;
-           
-            grid-template-areas:
-                "m r r t"
-                "m b b t"
-                "m s s t"
-                "m l l t";           
-    }
+            .app {
+                    display:                grid;
+                    grid-template-columns:  .5fr 1fr 1fr .5fr;
+                    grid-template-rows:     .5fr .5fr 8.65fr 2fr;      
+                    grid-template-areas:
+                        "m r r t"
+                        "m b b t"
+                        "m s s t"
+                        "m l l t";           
+            }
 
             .top-first {
                 grid-area: r;
@@ -70,9 +69,10 @@
                 font-family:times;
                 background-color: #000000;
                 opacity: 1;
-                background-image: url("https://static01.nyt.com/images/2018/10/05/arts/05astarisborn1/05astarisborn1-mediumThreeByTwo210.jpg");
+                background-image: url(${post.multimedia.src});
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
+                color:white;
             }
             .side-right{
                 grid-area: t;
@@ -99,17 +99,39 @@
                 background-color: black;
                 color:white;
             }
-            .position{
-                height: 80%;
-            }
-            .test{
-                color:red;
-            }
-            .fade{
-                
+         
+            .fade{               
                 -webkit-animation: fadeinout 2s linear forwards;
                 animation: fadeinout 2s linear forwards;
             }
+            .fade-quick{
+                -webkit-animation: fadeinout .5s linear forwards;
+                animation: fadeinout .5s linear forwards;
+            }
+            .fade1{
+                -webkit-animation: fadeinout 2s linear forwards;
+                animation: fadeinout 2s linear forwards;
+            }
+            .fade2{
+                -webkit-animation: fadeinout 3s linear forwards;
+                animation: fadeinout 3s linear forwards;
+            }
+            .fade3{
+                -webkit-animation: fadeinout 4s linear forwards;
+                animation: fadeinout 4s linear forwards;
+            }
+            .fade4{
+                -webkit-animation: fadeinout 5s linear forwards;
+                animation: fadeinout 5s linear forwards;
+            }
+            .fade5{
+                -webkit-animation: fadeinout 6s linear forwards;
+                animation: fadeinout 6s linear forwards;
+            }
+            a{
+                color:white;
+            }
+
             @keyframes fadeinout {
                 0%,100% { opacity: 0 }
                 100% { opacity: 1 }
@@ -183,23 +205,37 @@ var count = 0;
                     let output = '<h2>Posts </h2>';
                     data.results.forEach(function(post){
                         objects.push(`
-                        <div class = "fade">
-                            <div class = "class="backgroundColor app">
+                        <div class="backgroundColor app">                          
                                 <div class = "top-first">
                                     <h2 class = "center">New York Times</h2>
                                 </div>
                                 <div class = "top-second">
                                     <h2  class ="center-movies">Movies</h2>
                                 </div>
-                                <h1 class = "test">${post.display_title} </h1>
-                                <h3>${post.headline} </h3>
-                                <img src = ${post.multimedia.src} alt = "${post.display_title}">
-                                <p>${post.summary_short} </p>
-                                <p> <a target = "_blank" href = ${post.link.url} style = "height:${post.multimedia.height}; width: ${post.multimedia.width}"> ${post.link.suggested_link_text} </a></p>
-                                <p>In Theaters on: ${post.opening_date}</p>
-                                <p> Rated: ${post.mpaa_rating} </p>
-                                <p>${post.headline} </p>
-                            <div>
+                                <div class="side-right">
+                                </div>
+                                <div class="main" style = "background-image: url(${post.multimedia.src})";>
+                                    <h1 class = " fade">${post.display_title} </h1>
+                                    <br>
+                                    <h2 class = "fade1">${post.headline} </h2>
+                                    <br>
+                                    <!--<img src = ${post.multimedia.src} alt = "${post.display_title}">-->
+                                    <h3 class = "fade2">${post.summary_short} </h3>
+                                    <br>
+                                    <h3 class = "fade3"> <a target = "_blank" href = ${post.link.url} style = "height:${post.multimedia.height}; width: ${post.multimedia.width}"> ${post.link.suggested_link_text} </a></h3>
+                                    <br>
+                                    <p class = "fade4"> In Theaters on: ${post.opening_date}</p>
+                                    <br>
+                                    <p class = "fade5"> Rated: ${post.mpaa_rating} </p> 
+                                </div>
+                                <div class = "side-left">
+                                </div>
+
+                                <div class = "bottom">
+                                    <h2 class = "center-bottom">Swipe Left or Right</h2>
+                                </div>
+                                
+                            
                         </div>
                         `);
                     });
