@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,212 +10,226 @@
     <link rel="icon" sizes="192x192" href="nice-highres.png">
 
     <style>
+        :root {
+            --color: #dbdfde;
+            --color2: #181a1d;
+            --colorBackground: #ffffff;
+            --box1: #000000;
+            --box2: #ffffff;
+            --box3: #201e81;
+            --box4: #ffffff;
+        }
 
-            :root{
-                --color:#dbdfde;
-                --color2:#181a1d;
-                --colorBackground: #ffffff;
-                --box1: #000000;
-                --box2: #ffffff;
-                --box3: #201e81;
-                --box4: #ffffff;
-            }
+        * {
+            margin: 0;
 
-            *{
-                margin:0;
+        }
 
-            }
-
-            .color{
+        .color {
             color: var(--color);
-            }
+        }
 
-            .color2{
-                color:var(--color2);
-            }
+        .color2 {
+            color: var(--color2);
+        }
 
-            .backgroundColor{
-                background-color: var(--colorBackground);
-            }
+        .backgroundColor {
+            background-color: var(--colorBackground);
+        }
 
-            .app {
-                    display:                grid;
-                    grid-template-columns:  minmax(.1 , 5fr) 1fr 1fr minmax(.1, 5fr);
-                    grid-template-rows:     .5fr .5fr fit-content .5fr;      
-                    grid-template-areas:
-                        "m r r t"
-                        "m b b t"
-                        "m s s t"
-                        "m l l t";           
-            }
+        .app {
+            display: grid;
+            grid-template-columns: minmax(.1, 5fr) 1fr 1fr minmax(.1, 5fr);
+            grid-template-rows: .5fr .5fr fit-content .5fr;
+            grid-template-areas: "m r r t" "m b b t" "m s s t" "m l l t";
+        }
 
-            .top-first {
-                grid-area: r;
-                background-color: var(--box1);
-                font-family:times;
-                color:white;
+        .top-first {
+            grid-area: r;
+            background-color: var(--box1);
+            font-family: times;
+            color: white;
+        }
+
+        .top-second {
+            grid-area: b;
+            background-color: var(--box1);
+            font-family: times;
+            color: white;
+        }
+
+        .side-left {
+            grid-area: m;
+            background-color: var(--box2);
+            font-family: times;
+        }
+
+        .main {
+            grid-area: s;
+            background-color: var(--box3);
+            font-family: times;
+            background-color: #000000;
+            opacity: 1;
+            background-image: url(${post.multimedia.src});
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            color: white;
+        }
+
+        .side-right {
+            grid-area: t;
+            background-color: var(--box4);
+            font-family: times;
+            color: white;
+        }
+
+        .center {
+            margin: 5% 20% 1% 25%;
+        }
+
+        .center-movies {
+            margin: 1% 20% 5% 25%;
+        }
+
+        .center-bottom {
+            margin: 4% 30% 1% 30%;
+        }
+
+        .bottom {
+            grid-area: l;
+            opacity: 1;
+            background-color: black;
+            color: white;
+        }
+
+        .fade {
+            -webkit-animation: fadeinout 2s linear forwards;
+            animation: fadeinout 2s linear forwards;
+        }
+
+        .fade-quick {
+            -webkit-animation: fadeinout .5s linear forwards;
+            animation: fadeinout .5s linear forwards;
+        }
+
+        .fade1 {
+            -webkit-animation: fadeinout 2s linear forwards;
+            animation: fadeinout 2s linear forwards;
+        }
+
+        .fade2 {
+            -webkit-animation: fadeinout 3s linear forwards;
+            animation: fadeinout 3s linear forwards;
+        }
+
+        .fade3 {
+            -webkit-animation: fadeinout 4s linear forwards;
+            animation: fadeinout 4s linear forwards;
+        }
+
+        .fade4 {
+            -webkit-animation: fadeinout 5s linear forwards;
+            animation: fadeinout 5s linear forwards;
+        }
+
+        .fade5 {
+            -webkit-animation: fadeinout 6s linear forwards;
+            animation: fadeinout 6s linear forwards;
+        }
+
+        a {
+            color: white;
+        }
+
+        @keyframes fadeinout {
+            0%,
+            100% {
+                opacity: 0
             }
-            .top-second{
-                grid-area: b;
-                background-color: var(--box1);
-                font-family:times;
-                color:white;
+            100% {
+                opacity: 1
             }
-            .side-left{
-                grid-area: m;
-                background-color: var(--box2);
-                font-family:times;
+        }
+
+        @-webkit-keyframes fadeinout {
+            0%,
+            100% {
+                opacity: 0;
             }
-            .main{
-                grid-area: s;
-                background-color: var(--box3);
-                font-family:times;
-                background-color: #000000;
+            100% {
                 opacity: 1;
-                background-image: url(${post.multimedia.src});
-                background-repeat: no-repeat;
-                background-size: 100% 100%;
-                color:white;
             }
-            .side-right{
-                grid-area: t;
-                background-color: var(--box4);
-                font-family:times;
-                color:white;
-            }
-
-            .center{
-                margin: 5% 20% 1% 25%;
-            }
-
-            .center-movies{
-                margin: 1% 20% 5% 25%;
-            }
-
-            .center-bottom{
-                margin: 4% 30% 1% 30%;
-            }
-
-            .bottom{
-                grid-area: l;
-                opacity: 1;
-                background-color: black;
-                color:white;
-            }
-         
-            .fade{               
-                -webkit-animation: fadeinout 2s linear forwards;
-                animation: fadeinout 2s linear forwards;
-            }
-            .fade-quick{
-                -webkit-animation: fadeinout .5s linear forwards;
-                animation: fadeinout .5s linear forwards;
-            }
-            .fade1{
-                -webkit-animation: fadeinout 2s linear forwards;
-                animation: fadeinout 2s linear forwards;
-            }
-            .fade2{
-                -webkit-animation: fadeinout 3s linear forwards;
-                animation: fadeinout 3s linear forwards;
-            }
-            .fade3{
-                -webkit-animation: fadeinout 4s linear forwards;
-                animation: fadeinout 4s linear forwards;
-            }
-            .fade4{
-                -webkit-animation: fadeinout 5s linear forwards;
-                animation: fadeinout 5s linear forwards;
-            }
-            .fade5{
-                -webkit-animation: fadeinout 6s linear forwards;
-                animation: fadeinout 6s linear forwards;
-            }
-            a{
-                color:white;
-            }
-
-            @keyframes fadeinout {
-                0%,100% { opacity: 0 }
-                100% { opacity: 1 }
-            }
-            @-webkit-keyframes fadeinout {
-                0%,100% { opacity: 0; }
-                100% { opacity: 1; }
-            }
-        
-        
-            </style>
+        }
+    </style>
 </head>
+
 <body>
 
-        <div class="box" id="box1" style = "height:100vh"> 
-           <p id="output" class = "position">Swipe left and right to View NYT movie reviews</p>
-        </div>
-            
+    <div class="box" id="box1" style="height:100vh">
+        <p id="output" class="position">Swipe left and right to View NYT movie reviews</p>
+    </div>
+
     <script>
- var startx = 0
- var finishx= 0;
-window.addEventListener('load', function(){
- 
-    var box1 = document.getElementById('box1')
-   //var statusadiv = document.getElementById('statusdiv')
+        var startx = 0
+        var finishx = 0;
+        window.addEventListener('load', function () {
 
-    var dist = 0
+            var box1 = document.getElementById('box1')
+            //var statusadiv = document.getElementById('statusdiv')
 
-    //records start of touch
-    box1.addEventListener('touchstart', function(e){
-        var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
-        startx = parseInt(touchobj.clientX) // get x position of touch point relative to left edge of browser
-        //statusdiv.innerHTML = 'Status: touchstart<br> ClientX: ' + startx + 'px'
-        e.preventDefault()
-    }, false)
+            var dist = 0
 
-    //records end of touch and swipes according to the value of the first touch minus the second
-    box1.addEventListener('touchend', function(e){
-        var touchobj = e.changedTouches[0] // reference first touch point for this event
-        // statusdiv.innerHTML = 'Status: touchend<br> Resting x coordinate: ' + touchobj.clientX + 'px'
-        finishx = touchobj.clientX;
+            //records start of touch
+            box1.addEventListener('touchstart', function (e) {
+                var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+                startx = parseInt(touchobj.clientX) // get x position of touch point relative to left edge of browser
+                //statusdiv.innerHTML = 'Status: touchstart<br> ClientX: ' + startx + 'px'
+                e.preventDefault()
+            }, false)
 
-        console.log("startx" + startx);
-        console.log("finsix" + finishx);
-        if(startx - finishx >20){
-        console.log("swipe left");
-        //statusdiv.innerHTML = 'swipe left';
-        getPostsForward();
-        }
-        else if (startx - finishx <-20){
-            console.log("swipe right");
-           // statusdiv.innerHTML = 'swipe right';
-            getPostsBackward();
-        }
-        e.preventDefault()
-    }, false)
+            //records end of touch and swipes according to the value of the first touch minus the second
+            box1.addEventListener('touchend', function (e) {
+                var touchobj = e.changedTouches[0] // reference first touch point for this event
+                // statusdiv.innerHTML = 'Status: touchend<br> Resting x coordinate: ' + touchobj.clientX + 'px'
+                finishx = touchobj.clientX;
 
-    //click events
-    box1.addEventListener('touchstart', function touch2Mouse(e)
-        {
-        var theTouch = e.changedTouches[0];
-        var mouseEv;
+                console.log("startx" + startx);
+                console.log("finsix" + finishx);
+                if (startx - finishx > 20) {
+                    console.log("swipe left");
+                    //statusdiv.innerHTML = 'swipe left';
+                    getPostsForward();
+                }
+                else if (startx - finishx < -20) {
+                    console.log("swipe right");
+                    // statusdiv.innerHTML = 'swipe right';
+                    getPostsBackward();
+                }
+                e.preventDefault()
+            }, false)
 
-        switch(e.type)
-        {
-            case "touchstart": mouseEv="click"; break;  
-            default: return;
-        }
-        var mouseEvent = document.createEvent("MouseEvent");
-        mouseEvent.initMouseEvent(mouseEv, true, true, window, 1, theTouch.screenX, theTouch.screenY, theTouch.clientX, theTouch.clientY, false, false, false, false, 0, null);
-        theTouch.target.dispatchEvent(mouseEvent);
-        e.preventDefault();
-    })
+            //click events
+            box1.addEventListener('touchstart', function touch2Mouse(e) {
+                var theTouch = e.changedTouches[0];
+                var mouseEv;
 
-}, false)
+                switch (e.type) {
+                    case "touchstart": mouseEv = "click"; break;
+                    default: return;
+                }
+                var mouseEvent = document.createEvent("MouseEvent");
+                mouseEvent.initMouseEvent(mouseEv, true, true, window, 1, theTouch.screenX, theTouch.screenY, theTouch.clientX, theTouch.clientY, false, false, false, false, 0, null);
+                theTouch.target.dispatchEvent(mouseEvent);
+                e.preventDefault();
+            })
+
+        }, false)
 
 
         var count = 0;
         var objects = [];
         //renders the page results if the swipe is to the left
-        function getPostsForward(){
+        function getPostsForward() {
             //api call
             fetch('https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key=cf54b26b95de4f4abeb378ae5b92e72a')
                 .then((res) => res.json())
@@ -222,7 +237,7 @@ window.addEventListener('load', function(){
                     //for debugging -> console.log(data.results);
 
                     //loops through each element in the data array and creates a string of HTML code that renders the page based off api data
-                    data.results.forEach(function(post){
+                    data.results.forEach(function (post) {
                         objects.push(`
                         <div class="backgroundColor app">                          
                                 <div class = "top-first">
@@ -260,17 +275,17 @@ window.addEventListener('load', function(){
                     });
                     //for debugging -> console.log(count);
                     //if the data in the array reaches the end, start from the beginning 
-                    if(count >= data.results.length){
+                    if (count >= data.results.length) {
                         count = 0;
                     }
                     //use the output id to grab that element and populate the data
                     document.getElementById('output').innerHTML = objects[count];
-                    
-            })
+
+                })
             count++;
         }
 
-         function getPostsBackward(){
+        function getPostsBackward() {
             fetch('https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key=cf54b26b95de4f4abeb378ae5b92e72a')
                 .then((res) => res.json())
                 .then((data) => {
@@ -278,7 +293,7 @@ window.addEventListener('load', function(){
                     //console.log(data.results);
 
                     //loops through each element in the data array and creates a string of HTML code that renders the page based off api data
-                    data.results.forEach(function(post){
+                    data.results.forEach(function (post) {
                         objects.push(`
                         <div class = "fade">
                             <h1 class = "test">${post.display_title} </h1>
@@ -293,19 +308,20 @@ window.addEventListener('load', function(){
                     });
                     //for debugging -> console.log(count);
                     //if the data in the array reaches the end, start from the beginning 
-                    if(count <= 0){
-                        count = data.results.length-1;
+                    if (count <= 0) {
+                        count = data.results.length - 1;
                     }
 
                     //for debugging -> console.log(count);
                     //use the output id to grab that element and populate the data
                     document.getElementById('output').innerHTML = objects[count];
-                    
-            })
+
+                })
             count--;
         }
 
     </script>
-    
+
 </body>
+
 </html>
