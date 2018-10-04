@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>New York Times Movie Viewer</title>
+    <link rel="icon" sizes="192x192" href="nice-highres.png">
 
     <style>
 
@@ -177,12 +179,12 @@ window.addEventListener('load', function(){
 
         console.log("startx" + startx);
         console.log("finsix" + finishx);
-        if(startx - finishx >0){
+        if(startx - finishx >20){
         console.log("swipe left");
         //statusdiv.innerHTML = 'swipe left';
         getPostsForward();
         }
-        else{
+        else if (startx - finishx <-20){
             console.log("swipe right");
            // statusdiv.innerHTML = 'swipe right';
             getPostsBackward();
