@@ -165,6 +165,7 @@ window.addEventListener('load', function(){
 
     var dist = 0
 
+    //records start of touch
     box1.addEventListener('touchstart', function(e){
         var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
         startx = parseInt(touchobj.clientX) // get x position of touch point relative to left edge of browser
@@ -172,6 +173,7 @@ window.addEventListener('load', function(){
         e.preventDefault()
     }, false)
 
+    //records end of touch and swipes according to the value of the first touch minus the second
     box1.addEventListener('touchend', function(e){
         var touchobj = e.changedTouches[0] // reference first touch point for this event
         // statusdiv.innerHTML = 'Status: touchend<br> Resting x coordinate: ' + touchobj.clientX + 'px'
@@ -192,19 +194,37 @@ window.addEventListener('load', function(){
         e.preventDefault()
     }, false)
 
+    //click events
+    box1.addEventListener('touchstart', function touch2Mouse(e)
+        {
+        var theTouch = e.changedTouches[0];
+        var mouseEv;
+
+        switch(e.type)
+        {
+            case "touchstart": mouseEv="click"; break;  
+            default: return;
+        }
+        var mouseEvent = document.createEvent("MouseEvent");
+        mouseEvent.initMouseEvent(mouseEv, true, true, window, 1, theTouch.screenX, theTouch.screenY, theTouch.clientX, theTouch.clientY, false, false, false, false, 0, null);
+        theTouch.target.dispatchEvent(mouseEvent);
+        e.preventDefault();
+    })
+
 }, false)
 
 
-var count = 0;
+        var count = 0;
         var objects = [];
-        //IMP
-        //idea to make a count variable and increment as the button is pushed for each object in JSON file
+        //renders the page results if the swipe is to the left
         function getPostsForward(){
+            //api call
             fetch('https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key=cf54b26b95de4f4abeb378ae5b92e72a')
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data.results);
-                    let output = '<h2>Posts </h2>';
+                    //for debugging -> console.log(data.results);
+
+                    //loops through each element in the data array and creates a string of HTML code that renders the page based off api data
                     data.results.forEach(function(post){
                         objects.push(`
                         <div class="backgroundColor app">                          
@@ -238,16 +258,15 @@ var count = 0;
                                 <div class = "bottom">
                                     <h2 class = "center-bottom">Swipe Left or Right</h2>
                                 </div>
-                                
-                            
                         </div>
                         `);
                     });
-                    //figure out whu reutrns 0
-                    console.log(count);
+                    //for debugging -> console.log(count);
+                    //if the data in the array reaches the end, start from the beginning 
                     if(count >= data.results.length){
                         count = 0;
                     }
+                    //use the output id to grab that element and populate the data
                     document.getElementById('output').innerHTML = objects[count];
                     
             })
@@ -258,8 +277,10 @@ var count = 0;
             fetch('https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key=cf54b26b95de4f4abeb378ae5b92e72a')
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data.results);
-                    let output = '<h2>Posts </h2>';
+                    //for debugging
+                    //console.log(data.results);
+
+                    //loops through each element in the data array and creates a string of HTML code that renders the page based off api data
                     data.results.forEach(function(post){
                         objects.push(`
                         <div class = "fade">
@@ -273,12 +294,14 @@ var count = 0;
                         </div>
                         `);
                     });
-                    //figure out whu reutrns 0
-                    console.log(count);
+                    //for debugging -> console.log(count);
+                    //if the data in the array reaches the end, start from the beginning 
                     if(count <= 0){
                         count = data.results.length-1;
                     }
-                    console.log(count);
+
+                    //for debugging -> console.log(count);
+                    //use the output id to grab that element and populate the data
                     document.getElementById('output').innerHTML = objects[count];
                     
             })
