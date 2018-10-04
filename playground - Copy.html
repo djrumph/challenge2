@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src = "snow.js"></script>
+    <style>
+    :root{
+        --color:#dbdfde;
+        --color2:#181a1d;
+        --colorBackground: #b49e1f;
+        --box1: #000000;
+        --box2: #681212;
+        --box3: #201e81;
+        --box4: #0f3f2f;
+    }
+
+    *{
+        margin:0;
+
+    }
+
+    .color{
+       color: var(--color);
+    }
+
+    .color2{
+        color:var(--color2);
+    }
+
+    .backgroundColor{
+        background-color: var(--colorBackground);
+    }
+
+    .app {
+            display:                grid;
+            grid-template-columns:  1fr 1fr 1fr 1fr;
+            grid-template-rows:     .5fr .5fr 12.65fr;
+           
+            grid-template-areas:
+                "m r r t"
+                "m b b t"
+                "m s s t";
+                
+    }
+
+.top-first {
+    grid-area: r;
+    background-color: var(--box1);
+    font-family:times;
+    color:white;
+}
+.top-second{
+    grid-area: b;
+    background-color: var(--box1);
+    font-family:times;
+    color:white;
+}
+.side-left{
+    grid-area: m;
+    background-color: var(--box2);
+    font-family:times;
+}
+.bottom-left {
+    grid-area: s;
+    background-color: var(--box3);
+    font-family:times;
+}
+.side-right{
+    grid-area: t;
+    background-color: var(--box4);
+    font-family:times;
+    color:white;
+}
+
+.center{
+    margin: 5% 30% 1% 30%;
+}
+
+.center-movies{
+    margin: 1% 30% 5% 40%;
+}
+
+
+    
+    </style>
+</head>
+<body class="backgroundColor app">
+
+    <div class = "top-first">
+        <h2 class = "center">New York Times</h2>
+    </div>
+
+    <div class = "top-second">
+        <h2  class ="center-movies">Movies</h2>
+    </div>
+
+    
+
+    <div class="side-right">
+   </div>
+    
+    
+   <div class="bottom-left">
+    <p  class ="color">box3</p>
+    <p  class ="color"> box3</p>
+   </div>
+   <div class = "side-left">
+    </div>
+
+    
+
+    
+
+
+</body>
+</html>
